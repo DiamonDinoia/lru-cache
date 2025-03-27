@@ -11,7 +11,7 @@ int test_function(const int x) {
 int mul(const int x) { return x * x; }
 
 TEST(LRUCacheTest, BasicFunctionality) {
-  lru::Cache cache(test_function);
+  auto cache= lru::make_cache(test_function);
   EXPECT_EQ(call_count, 0);
   // Test insertion and retrieval
   EXPECT_EQ(cache(cache.capacity + 2), mul(cache.capacity + 2));
@@ -48,6 +48,6 @@ TEST(LRUCacheTest, BasicFunctionality) {
 }
 
 int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
+  testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

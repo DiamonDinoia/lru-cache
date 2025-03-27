@@ -64,7 +64,7 @@ double factorial(double n) {
   return n * factorial(n - 1);
 }
 
-lru::Cache cache(factorial);
+auto cache = lru::make_cache(factorial);
 
 // Function to calculate binomial coefficient
 double binomial(double n, double k) {

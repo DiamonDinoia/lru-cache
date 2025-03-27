@@ -91,7 +91,7 @@ avoid dynamic memory allocations (`new`/`delete`) during cache hits and misses o
    }
 
    // Create a cache with capacity 100 (default is 1024)
-   lru::Cache cache(process_data, 100);
+   auto cache = lru::make_cache(process_data, 100);
    ```
 4. **Call via Cache:** Use the cache object's `operator()` like you would call the original function. The cache handles
    lookup, computation (on miss), caching, and eviction automatically.
@@ -125,7 +125,7 @@ long long expensive_calculation(int x, const std::string& label) {
 
 int main() {
     // Create a cache for the function with a small capacity of 3 for demonstration
-    lru::Cache cache(expensive_calculation, 3);
+    auto cache = lru::make_cache(expensive_calculation, 3);
 
     std::cout << "Cache Capacity: " << cache.capacity << std::endl << std::endl;
 

@@ -129,7 +129,7 @@ namespace caching {
 // forward declaration to allow  canForm to use the cache instead of calling
 // itself recursively
 bool canForm(std::string_view s);
-lru::Cache cache(canForm);
+auto cache = lru::make_cache(canForm);
 
 std::unordered_set<std::string_view> wordSet;
 bool canForm(std::string_view s) {

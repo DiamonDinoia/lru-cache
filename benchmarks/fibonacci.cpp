@@ -20,7 +20,7 @@ int main() {
     constexpr auto evals = 35;
 
     // Fibonacci only needs the last two values
-    lru::Cache cache(fibonacci ,2);
+    auto cache = lru::make_cache(fibonacci ,2);
 
 
     bench.run("Direct evaluation", [&]() {
